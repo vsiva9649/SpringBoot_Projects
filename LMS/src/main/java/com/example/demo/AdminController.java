@@ -18,11 +18,11 @@ public class AdminController {
 //Indexpage
   public ModelAndView index() {
     ModelAndView mv = new ModelAndView();
-    mv.setViewName("index.html");
+    mv.setViewName("index.jsp");
     return mv;
   }
   
-  
+ 
   @GetMapping( "AddBook")
 //AddIndexpage
   public ModelAndView addindex() {

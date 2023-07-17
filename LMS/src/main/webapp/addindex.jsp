@@ -7,10 +7,10 @@
 <form action="AddBookDetails">
 <h1> ADD BOOK INFORMATION</h1>
 <label for="bname"> The Book Name :</label>
-<input type="text" id="bname" name="bname" title="please enter your valid name" required>
+<input type="text" id="bname" name="bname" pattern="[A-Z a-z0-9\s[-]]" title="please enter a valid Book Name" required>
 <br>
 <label for="aname"> The Name of Author(s) :</label>
-<input type="text" id="aname" name="aname"   title="please enter your valid name" required>
+<input type="text" id="aname" name="aname" pattern="[A-Z a-z\s{2,20}]" title="please enter a valid Author Name" required>
 <br>
 <label for ="bookcategory">Select Book Category :</label>
 <select name ="category" id= "category">
@@ -36,16 +36,16 @@
 </select>
 <br>
 <label for="pname"> The Name of the Publisher :</label>
-<input type="text" id="pname" name="pname">
+<input type="text" id="pname" name="pname" pattern="[A-Z a-z\s]" title="Enter a valid Publisher Name." required>
 <br>
 <label for="edition">The Edition number :</label>
-<input type="text" id="edition" name="edition">
+<input type="text" id="edition" name="edition" pattern="[0-9]" title="Enter a valid Edition number." required>
 <br>
 <label for="pages">The number of Pages :</label>
-<input type="text" id="pages" name="pages">
+<input type="text" id="pages" name="pages" pattern="[0-9]" title="Enter a valid page numbers." required>
 <br>
 <label for="isbn">ISBN for the Book :</label>
-<input type="text" id="isbn" name="isbn">
+<input type="text" id="isbn" name="isbn" pattern="[0-9]" title="Enter a valid numbers only." required>
 <br>
 <button type="submit"> Add Book</button>
 
