@@ -17,7 +17,7 @@ public class LoginController {
 	  {
 	    ModelAndView mv = new ModelAndView(); 
 //	    mv.addObject("username", st);
-	    mv.setViewName("Login.jsp");
+	    mv.setViewName("Login.html");
 	    return mv; 
 	  }
   
