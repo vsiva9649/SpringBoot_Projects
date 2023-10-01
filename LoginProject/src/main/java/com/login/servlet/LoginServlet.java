@@ -20,14 +20,14 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public LoginServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public LoginServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see Servlet#getServletConfig()
@@ -38,57 +38,60 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		System.out.println("Do GET");
 
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		System.out.println("LoginServlet Do POST Starting");
-		
+
 		try {
-			String LoginUserName=request.getParameter("username");
-			String LoginUserPassword=request.getParameter("userpassword");;
-			
-			System.out.println("UserName : "+LoginUserName);
-			System.out.println("UserPassword : "+LoginUserPassword);
-			
+			String LoginUserName = request.getParameter("username");
+			String LoginUserPassword = request.getParameter("userpassword");
+			;
+
+			System.out.println("UserName : " + LoginUserName);
+			System.out.println("UserPassword : " + LoginUserPassword);
+
 			LoginDTO loginto = new LoginDTO();
 			loginto.setUserName(LoginUserName);
 			loginto.setUserpassword(LoginUserPassword);
-			
+
 			LoginDAO logindao = new LoginDAO();
 			boolean isvalidstaff = logindao.chkLoginStaff(loginto);
-			
-			if(isvalidstaff) {
+
+			if (isvalidstaff) {
 				request.getRequestDispatcher("Welcome.jsp").forward(request, response);
-		//		response.sendRedirect("welcome.jsp"); 
-			}else {
-				
-				//request.setAttribute("", "");// 1 or2 pages
-				request.getSession().setAttribute("loginErrMsg","Invalid staff details please enter valid username or password"); // for entire page until logout
+				// response.sendRedirect("welcome.jsp");
+			} else {
+
+				// request.setAttribute("", "");// 1 or2 pages
+				request.getSession().setAttribute("loginErrMsg",
+						"Invalid staff details please enter valid username or password"); // for entire page until
+																							// logout
 				request.getRequestDispatcher("Login.jsp").forward(request, response);
 
 			}
-			
-			
 
-		} 
-		catch (Exception e) {
+		} catch (Exception e) {
 			// TODO: handle exception
-			System.out.println("LoginServlet Do POST Exception"+e);
+			System.out.println("LoginServlet Do POST Exception" + e);
 		}
-	
-		
+
 		System.out.println("LoginServlet Do POST ending");
 
 	}
- 
+
 }

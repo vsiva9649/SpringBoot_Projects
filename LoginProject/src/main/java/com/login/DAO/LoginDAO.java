@@ -22,7 +22,7 @@ public class LoginDAO { // DAta Access Object
 
 			con = DBConnection.getConnection();
 			String loginQuery = "select username, userpassword from app.login where username = ? and userpassword = ?";
-			
+
 //			String loginQuery1 = "select username, usrpassword,from app.login where username = ? and userpassword=?"+ logindto.getUsername()+"'"
 //					 +" and userpassword='"+logindto.getUserpassword()+"'";
 
@@ -30,25 +30,24 @@ public class LoginDAO { // DAta Access Object
 			ps.setString(1, logindto.getUserName());
 			ps.setString(2, logindto.getUserpassword());
 			rs = ps.executeQuery();
-			
-			
+
 			while (rs.next()) {
 				String username = rs.getString("username");
 				System.out.println("LoginDAO chkLoginStaff username : " + username);
-				if(username != null && !username.isEmpty()) {
+				if (username != null && !username.isEmpty()) {
 					isvalidstaff = true;
-				}else {
+				} else {
 					isvalidstaff = false;
 				}
 				String userpassword = rs.getString("userpassword");
-				
+
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("LoginDAO chkLoginStaff Exception" + e);
 
 		}
-		System.out.println("LoginDAO chkLoginStaff isvalidstaff : "+isvalidstaff);
+		System.out.println("LoginDAO chkLoginStaff isvalidstaff : " + isvalidstaff);
 		System.out.println("LoginDAO chkLoginStaff Ends");
 
 		return isvalidstaff;
